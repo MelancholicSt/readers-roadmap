@@ -1,0 +1,6 @@
+@BookStackRoadmap_HostAddress = http://localhost:5151
+
+GET {{BookStackRoadmap_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
