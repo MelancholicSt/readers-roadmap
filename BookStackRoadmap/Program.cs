@@ -2,12 +2,15 @@ using System.Runtime.CompilerServices;
 using BookStackRoadmap.Data.Repositories;
 using BookStackRoadmap.Services;
 
+
 namespace BookStackRoadmap;
 
 public class Program
 {
     public static void Main(string[] args)
     {
+        
+        
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.

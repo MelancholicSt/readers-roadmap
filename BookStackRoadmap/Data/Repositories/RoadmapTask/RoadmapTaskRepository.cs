@@ -1,8 +1,11 @@
-﻿using BookStackRoadmap.Entities;
+﻿using BookStackRoadmap.Context;
+using BookStackRoadmap.Entities;
+using Microsoft.EntityFrameworkCore;
+using TaskStatus = BookStackRoadmap.Entities.TaskStatus;
 
 namespace BookStackRoadmap.Data.Repositories;
 
-public class RoadmapTaskRepository : IRoadmapTaskRepository
+public class RoadmapTaskRepository(RoadmapContext context) : IRoadmapTaskRepository
 {
     public void Dispose()
     {
@@ -11,46 +14,59 @@ public class RoadmapTaskRepository : IRoadmapTaskRepository
 
     public void Save()
     {
-        
+        context.SaveChanges(true);
     }
 
     public IEnumerable<RoadmapTask> GetAll()
     {
-        throw new NotImplementedException();
+        return context.RoadmapTasks.AsEnumerable();
     }
 
-    public RoadmapTask Get(long id)
+    public RoadmapTask? Get(long id)
     {
-        throw new NotImplementedException();
+        return context.RoadmapTasks.Find(id);
     }
 
     public void Create(RoadmapTask entity)
     {
-        throw new NotImplementedException();
+        context.RoadmapTasks.Add(entity);
+        Save();
     }
 
     public void Update(RoadmapTask entity)
     {
-        throw new NotImplementedException();
+        RoadmapTask task = context.RoadmapTasks.Find(entity.Id);
+        context.Entry(task).CurrentValues.SetValues(entity);
+        Save();
     }
 
     public void Remove(RoadmapTask entity)
     {
-        throw new NotImplementedException();
+        context.RoadmapTasks.Remove(entity);
+        Save();
     }
 
     public IEnumerable<RoadmapTask> GetCompletedTasks()
     {
-        throw new NotImplementedException();
+        IEnumerable<RoadmapTask> completedTasks = context.RoadmapTasks
+            .Include(c => c.Status)
+            .Where(c => c.Status.StatusName == "done");
+        return completedTasks;
     }
 
-    public IEnumerable<RoadmapTask> GetProcessingTasks()
+    public IEnumerable<RoadmapTask> GetTasksInProgress()
     {
-        throw new NotImplementedException();
+        IEnumerable<RoadmapTask> tasksInProgress = context.RoadmapTasks
+            .Include(c => c.Status)
+            .Where(c => c.Status.StatusName == "reading");
+        return tasksInProgress;
     }
 
     public IEnumerable<RoadmapTask> GetCreatedTasks()
     {
-        throw new NotImplementedException();
+        IEnumerable<RoadmapTask> createdTasks = context.RoadmapTasks
+            .Include(c => c.Status)
+            .Where(c => c.Status.StatusName == "created");
+        return createdTasks;
     }
 }
