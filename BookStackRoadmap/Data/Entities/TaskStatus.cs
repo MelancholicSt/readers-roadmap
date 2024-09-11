@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BookStackRoadmap.Entities;
+namespace BookStackRoadmap.Data.Entities;
 
-public class TaskStatus : IEntity
+public partial class TaskStatus
 {
     public long Id { get; set; }
 
     public string StatusName { get; set; } = null!;
 
-    public virtual ICollection<RoadmapTask> RoadmapTasks { get; set; } = new List<RoadmapTask>();
+    public long? TaskId { get; set; }
+
+    public virtual Task? Task { get; set; }
 }

@@ -1,7 +1,4 @@
 using System.Runtime.CompilerServices;
-using BookStackRoadmap.Data.Repositories;
-using BookStackRoadmap.Services;
-
 
 namespace BookStackRoadmap;
 
@@ -39,13 +36,10 @@ public class Program
 
     private static void InjectServices(IServiceCollection services)
     {
-        services.AddTransient<IRoadmapService, RoadmapService>();
     }
 
     private static void InjectRepositories(IServiceCollection services)
     {
-        services.AddScoped<IRoadmapTaskRepository, RoadmapTaskRepository>();
-        services.AddScoped<ITaskStatusRepository, TaskStatusRepository>();
-        services.AddScoped<IBookRepository, BookRepository>();
+        
     }
 }

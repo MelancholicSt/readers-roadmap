@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 namespace BookStackRoadmap.Data.Entities;
 
-public partial class Book
+public partial class File
 {
     public long Id { get; set; }
 
-    public string? Name { get; set; }
+    public string Path { get; set; } = null!;
 
-    public string? Author { get; set; }
+    public long BookPageId { get; set; }
+
+    public virtual BookPage BookPage { get; set; } = null!;
 
     public virtual ICollection<BookPage> BookPages { get; set; } = new List<BookPage>();
 }
