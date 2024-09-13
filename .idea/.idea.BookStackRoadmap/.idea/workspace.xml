@@ -8,7 +8,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6223c978-3a79-4a9e-91ba-6c5da8f73622" name="Changes" comment="" />
+    <list default="true" id="6223c978-3a79-4a9e-91ba-6c5da8f73622" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/BookStackRoadmap/Controllers/UserController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/IEntity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookStackRoadmap/Models/Dto/IDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookStackRoadmap/Models/Dto/User/CreateUserDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookStackRoadmap/Models/Dto/User/GetUserDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookStackRoadmap/Models/Dto/User/UpdateUserInformationDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BookStackRoadmap/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookStackRoadmap/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BookStackRoadmap/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookStackRoadmap/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/Book.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/BookPage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/BookPage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/File.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/File.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/Role.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/Task.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/Task.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/TaskStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/TaskStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/UrlLink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/UrlLink.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookStackRoadmap/Entities/UserUrlLink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookStackRoadmap/Entities/UserUrlLink.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,6 +117,7 @@
       <workItem from="1725891482017" duration="2163000" />
       <workItem from="1725997290025" duration="2070000" />
       <workItem from="1726077376421" duration="7806000" />
+      <workItem from="1726235177917" duration="5132000" />
     </task>
     <servers />
   </component>

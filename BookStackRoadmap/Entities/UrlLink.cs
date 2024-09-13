@@ -10,4 +10,6 @@ public partial class UrlLink
     public string? Name { get; set; }
 
     public string Url { get; set; } = null!;
+
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

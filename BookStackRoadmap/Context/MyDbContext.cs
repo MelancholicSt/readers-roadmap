@@ -33,8 +33,6 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    public virtual DbSet<UserUrlLink> UserUrlLinks { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;database=books_roadmap;uid=root;pwd=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.39-mysql"));
@@ -259,20 +257,30 @@ public partial class MyDbContext : DbContext
                             .HasColumnName("user_id");
                         j.IndexerProperty<int>("RoleId").HasColumnName("role_id");
                     });
-        });
 
-        modelBuilder.Entity<UserUrlLink>(entity =>
-        {
-            entity.HasKey(e => new { e.UserId, e.UrlLinkId })
-                .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-
-            entity.ToTable("user_url_links");
-
-            entity.Property(e => e.UserId)
-                .HasMaxLength(36)
-                .HasColumnName("user_id");
-            entity.Property(e => e.UrlLinkId).HasColumnName("url_link_id");
+            entity.HasMany(d => d.UrlLinks).WithMany(p => p.Users)
+                .UsingEntity<Dictionary<string, object>>(
+                    "UserUrlLink",
+                    r => r.HasOne<UrlLink>().WithMany()
+                        .HasForeignKey("UrlLinkId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("user_url_links_ibfk_2"),
+                    l => l.HasOne<User>().WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("user_url_links_ibfk_1"),
+                    j =>
+                    {
+                        j.HasKey("UserId", "UrlLinkId")
+                            .HasName("PRIMARY")
+                            .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                        j.ToTable("user_url_links");
+                        j.HasIndex(new[] { "UrlLinkId" }, "url_link_id");
+                        j.IndexerProperty<string>("UserId")
+                            .HasMaxLength(36)
+                            .HasColumnName("user_id");
+                        j.IndexerProperty<long>("UrlLinkId").HasColumnName("url_link_id");
+                    });
         });
 
         OnModelCreatingPartial(modelBuilder);

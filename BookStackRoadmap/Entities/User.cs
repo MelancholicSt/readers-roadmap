@@ -18,4 +18,6 @@ public partial class User
     public ulong? IsVerified { get; set; }
 
     public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
+
+    public virtual ICollection<UrlLink> UrlLinks { get; set; } = new List<UrlLink>();
 }
